@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renz Marcel S. De Vera | IT Portfolio</title>
+  <style>
+/* Modern CSS Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --primary-light: #818cf8;
+  --accent: #ec4899;
+  --bg: #0f172a;
+  --bg-light: #1e293b;
+  --bg-card: #1e293b;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --overlay: rgba(15, 23, 42, 0.95);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+  opacity: 0.1;
+  top: -250px;
+  right: -250px;
+  animation: pulse 8s ease-in-out infinite;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+  opacity: 0.1;
+  bottom: -200px;
+  left: -200px;
+  animation: pulse 6s ease-in-out infinite reverse;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.1; }
+  50% { transform: scale(1.2); opacity: 0.15; }
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-light), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  z-index: 1;
+  animation: slideDown 0.8s ease-out;
+}
+
+.hero p {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  color: var(--text-muted);
+  z-index: 1;
+  animation: slideDown 0.8s ease-out 0.2s both;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Navigation */
+.nav {
+  position: sticky;
+  top: 0;
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  animation: slideDown 0.8s ease-out 0.4s both;
+}
+
+.nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: width 0.3s ease;
+}
+
+.nav a:hover {
+  color: var(--text);
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.container h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--primary-light), var(--text));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Skills Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.skills-grid span {
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.skills-grid span:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+}
+
+/* Certificate Grid */
+.certificate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.certificate-grid span {
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.certificate-grid span:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+}
+
+/* Project Grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Card Styles */
+.card {
+  background: var(--bg-card);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+  opacity: 0.1;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary);
+  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+  position: relative;
+  z-index: 1;
+}
+
+.card p {
+  color: var(--text-muted);
+  position: relative;
+  z-index: 1;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--overlay);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease-out;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background: var(--bg-light);
+  border-radius: 24px;
+  padding: 2rem;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  cursor: default;
+  animation: slideUp 0.4s ease-out;
+  border: 1px solid var(--border);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+  transition: opacity 0.2s ease-in-out;
+}
+
+.modal-content h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.modal-content p {
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* Carousel Controls */
+.carousel-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.carousel-controls button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.carousel-controls button:hover {
+  background: var(--primary-dark);
+  transform: scale(1.1);
+  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4);
+}
+
+.carousel-controls button:active {
+  transform: scale(0.95);
+}
+
+/* Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Footer */
+footer {
+  background: var(--bg-light);
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav {
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .container {
+    padding: 3rem 1rem;
+  }
+  
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  
+  .modal {
+    padding: 1rem;
+  }
+  
+  .modal-content {
+    padding: 1.5rem;
+  }
+}
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>Renz Marcel S. De Vera</h1>
+  <p>IT Student • Web & System Development</p>
+</header>
+
+<nav class="nav">
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="about" class="container reveal">
+  <h2>About Me</h2>
+  <p>IT student with experience in web development, mobile development, desktop application development, system troubleshooting. Passionate about creating efficient solutions and learning new technologies.</p>
+</section>
+
+<section id="skills" class="container reveal">
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    <span>Web Development</span>
+    <span>Web System</span>
+    <span>Mobile Application Development</span>
+    <span>Desktop Application Development</span>
+    <span>Basic and Advanced Hardware and Software Troubleshooting</span>
+  </div>
+</section>
+
+<section id="skills" class="container reveal">
+  <h2>Certificate</h2>
+  <div class="certificate-grid">
+    <span>National Certificate II in Philippine College of Science and Technology 2024-2029 </span>
+  </div>
+</section>
+
+<section id="projects" class="container reveal">
+  <h2>Projects</h2>
+
+  <div class="project-grid">
+    <div class="card" onclick="openModal(
+      ['assets/Payroll/payroll_dashboard.jpg','assets/Payroll/payroll_employees.jpg', 'assets/Payroll/payroll_process.jpg', 'assets/Payroll/payroll_reports.jpg', 'assets/Payroll/payroll_settings.jpg'],
+      'Payroll System',
+      'A comprehensive desktop-based payroll system with employee records, salary computation, unique features for salary advance and automatic benefits/other deduction. Features include automated calculations and deductions, reporting, and user management.'
+    )">
+      <h3>Payroll System</h3>
+      <p>Desktop Payroll Application</p>
+    </div>
+
+    <div class="card" onclick="openModal(
+      ['assets/Mers/login_mers.jpg','assets/Mers/physician_home.jpg', 'assets/Mers/physician_dashboard.jpg', 'assets/Mers/user_dashboard.jpg'],
+      'Medical Record System',
+      'Student medical record management system with appointment scheduling, and medical history storage. Built with modern web technologies for efficient healthcare management.'
+    )">
+      <h3>Medical Record System</h3>
+      <p>Student medical record management</p>
+    </div>
+
+    <div class="card" onclick="openModal(
+      [],
+      'A mobile application developed using Flutter for song management, with unique login feature requiring user for an OTP to get verfied.'
+    )">
+      <h3>Mobile Application</h3>
+      <p>Mobile Application developed using Flutter</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="container reveal">
+  <h2>Contact</h2>
+  <p>Contact Number: 09197762601</p>
+  <p>Email: renzmdevera@email.com</p>
+  <p>GitHub: github.com/yourusername</p>
+</section>
+
+<footer>
+  © 2026 Renz Marcel S. De Vera
+</footer>
+
+<!-- MODAL -->
+<div id="modal" class="modal" onclick="closeModal(event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <img id="modalImg" alt="Project screenshot">
+    <div class="carousel-controls">
+      <button onclick="prevImg(event)" aria-label="Previous image">‹</button>
+      <button onclick="nextImg(event)" aria-label="Next image">›</button>
+    </div>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+  </div>
+</div>
+
+<script>
+// Modal Elements
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modalImg");
+const modalTitle = document.getElementById("modalTitle");
+const modalDesc = document.getElementById("modalDesc");
+
+let images = [];
+let current = 0;
+
+// Open Modal Function - handles both single images and arrays
+function openModal(imgData, title = '', desc = '') {
+  // Handle different input types
+  if (typeof imgData === 'string') {
+    images = [imgData];
+  } else if (Array.isArray(imgData)) {
+    images = imgData;
+  } else {
+    console.error('Invalid image data provided to openModal');
+    return;
+  }
+  
+  current = 0;
+  modalImg.src = images[current];
+  modalTitle.textContent = title;
+  modalDesc.textContent = desc;
+  modal.style.display = "flex";
+  
+  // Add smooth fade-in animation
+  setTimeout(() => {
+    modal.style.opacity = "1";
+  }, 10);
+  
+  // Prevent body scroll when modal is open
+  document.body.style.overflow = 'hidden';
+  
+  // Show/hide carousel controls based on image count
+  const controls = document.querySelector('.carousel-controls');
+  if (controls) {
+    controls.style.display = images.length > 1 ? 'flex' : 'none';
+  }
+}
+
+// Next Image Function
+function nextImg(e) {
+  e.stopPropagation();
+  if (images.length <= 1) return;
+  
+  // Add fade transition
+  modalImg.style.opacity = '0';
+  
+  setTimeout(() => {
+    current = (current + 1) % images.length;
+    modalImg.src = images[current];
+    modalImg.style.opacity = '1';
+  }, 200);
+}
+
+// Previous Image Function
+function prevImg(e) {
+  e.stopPropagation();
+  if (images.length <= 1) return;
+  
+  // Add fade transition
+  modalImg.style.opacity = '0';
+  
+  setTimeout(() => {
+    current = (current - 1 + images.length) % images.length;
+    modalImg.src = images[current];
+    modalImg.style.opacity = '1';
+  }, 200);
+}
+
+// Close Modal Function
+function closeModal(e) {
+  if (e.target === modal) {
+    modal.style.opacity = "0";
+    setTimeout(() => {
+      modal.style.display = "none";
+      document.body.style.overflow = 'auto';
+    }, 300);
+  }
+}
+
+// Close modal on ESC key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modal.style.display === 'flex') {
+    modal.style.opacity = "0";
+    setTimeout(() => {
+      modal.style.display = "none";
+      document.body.style.overflow = 'auto';
+    }, 300);
+  }
+});
+
+// Arrow key navigation for images
+document.addEventListener('keydown', (e) => {
+  if (modal.style.display === 'flex') {
+    if (e.key === 'ArrowRight') {
+      nextImg(e);
+    } else if (e.key === 'ArrowLeft') {
+      prevImg(e);
+    }
+  }
+});
+
+// Reveal on Scroll Animation
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    const triggerPoint = window.innerHeight - 100;
+    
+    if (top < triggerPoint) {
+      el.classList.add("active");
+    }
+  });
+}
+
+// Smooth scroll for navigation links
+document.querySelectorAll('.nav a').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    const targetSection = document.querySelector(targetId);
+    
+    if (targetSection) {
+      targetSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+// Initialize
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+revealOnScroll();
+</script>
+
+</body>
+</html>
