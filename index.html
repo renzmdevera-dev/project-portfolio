@@ -461,14 +461,14 @@ footer {
 
 <section id="about" class="container reveal">
   <h2>About Me</h2>
-  <p>IT student with experience in web development, mobile development, desktop application development, system troubleshooting. Passionate about creating efficient solutions and learning new technologies.</p>
+  <p>An IT graduate with practical experience across the full development lifecycle — from web and mobile applications to desktop systems and technical support. Driven by curiosity, a commitment to delivering clean well-crafted solutions, and a willingness to learn whatever it takes to get the job done right.</p>
 </section>
 
 <section id="skills" class="container reveal">
   <h2>Skills</h2>
   <div class="skills-grid">
     <span>Web Development</span>
-    <span>Web System</span>
+    <span>Web System Application</span>
     <span>Mobile Application Development</span>
     <span>Desktop Application Development</span>
     <span>Basic and Advanced Hardware and Software Troubleshooting</span>
@@ -479,7 +479,7 @@ footer {
 <section id="skills" class="container reveal">
   <h2>Certificate</h2>
   <div class="certificate-grid">
-    <span>National Certificate II in Philippine College of Science and Technology 2024-2029 </span>
+    <span>National Certificate II in Philippine College of Science and Technology 2024-2029</span>
   </div>
 </section>
 
@@ -487,6 +487,7 @@ footer {
   <h2>Projects</h2>
 
   <div class="project-grid">
+
     <div class="card" onclick="openModal(
       ['assets/Payroll/payroll_dashboard.jpg','assets/Payroll/payroll_employees.jpg', 'assets/Payroll/payroll_process.jpg', 'assets/Payroll/payroll_reports.jpg', 'assets/Payroll/payroll_settings.jpg'],
       'Payroll System',
@@ -507,13 +508,25 @@ footer {
 
     <div class="card" onclick="openModal(
       [],
-      'A mobile application developed using Flutter for song management, with unique login feature requiring user for an OTP to get verfied.'
+      'Mobile Application',
+      'A mobile application developed using Flutter for song management, with unique login feature requiring user for an OTP to get verified.'
     )">
       <h3>Mobile Application</h3>
       <p>Mobile Application developed using Flutter</p>
     </div>
+
+    <div class="card" onclick="openModal(
+      ['assets/Pos/cashier.jpg','assets/Pos/inventory.jpg', 'assets/Pos/orders.jpg', 'assets/Pos/reports.jpg','assets/Pos/users.jpg','assets/Pos/roles.jpg'],
+      'POS System',
+      'A desktop application developed using Tauri, TypeScript, Python for point of sale system with inventory management, sales tracking, and reporting features.'
+    )">
+      <h3>POS System</h3>
+      <p>Desktop Application developed using Tauri, Typescript and Python</p>
+    </div>
+
   </div>
 </section>
+
 
 <section id="contact" class="container reveal">
   <h2>Contact</h2>
@@ -562,7 +575,8 @@ function openModal(imgData, title = '', desc = '') {
   }
   
   current = 0;
-  modalImg.src = images[current];
+  modalImg.src = images.length > 0 ? images[current] : '';
+  modalImg.style.display = images.length > 0 ? 'block' : 'none';
   modalTitle.textContent = title;
   modalDesc.textContent = desc;
   modal.style.display = "flex";
