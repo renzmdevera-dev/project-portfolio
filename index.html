@@ -332,6 +332,18 @@ body {
   }
 }
 
+.contact-link {
+  color: var(--primary-light);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
 .modal-content img {
   width: 100%;
   height: auto;
@@ -539,11 +551,32 @@ footer {
 
 <section id="contact" class="container reveal">
   <h2>Contact</h2>
-  <p>Contact Number: 09197762601</p>
-  <p>Email: renzmdevera@email.com</p>
-  <p>GitHub: github.com/renzdevera-dev</p>
-</section>
 
+  <p>Contact Number: 09197762601</p>
+
+  <p>
+    Email:
+    <a
+      href="mailto:renzmdevera@email.com?subject=Portfolio Inquiry"
+      id="contactBtn"
+      class="contact-link"
+    >
+      renzmdevera@email.com
+    </a>
+  </p>
+
+  <p>
+    GitHub:
+    <a
+      href="https://github.com/renzdevera-dev"
+      target="_blank"
+      class="contact-link"
+      id="githubBtn"
+    >
+      github.com/renzdevera-dev
+    </a>
+  </p>
+</section>
 <footer>
   © 2026 Renz Marcel S. De Vera
 </footer>
@@ -645,6 +678,15 @@ function closeModal(e) {
     }, 300);
   }
 }
+//Button Clicks on Contact me
+<script>
+document.getElementById("contactBtn").addEventListener("click", () => {
+  gtag('event', 'contact_button_click', {
+    event_category: 'engagement',
+    event_label: 'Contact Me Button'
+  });
+});
+</script>
 
 // Close modal on ESC key
 document.addEventListener('keydown', (e) => {
