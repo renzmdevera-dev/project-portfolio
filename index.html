@@ -209,6 +209,19 @@ body {
   margin-top: 2rem;
 }
 
+/* Contact Link */
+.contact-link {
+  color: var(--primary-light);
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.contact-link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
 .certificate-grid span {
   background: var(--bg-card);
   padding: 1.5rem;
@@ -336,7 +349,7 @@ body {
   color: var(--primary-light);
   text-decoration: none;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .contact-link:hover {
@@ -593,7 +606,6 @@ footer {
     <p id="modalDesc"></p>
   </div>
 </div>
-
 <script>
 // Modal Elements
 const modal = document.getElementById("modal");
@@ -604,143 +616,183 @@ const modalDesc = document.getElementById("modalDesc");
 let images = [];
 let current = 0;
 
-// Open Modal Function - handles both single images and arrays
+// Open Modal Function
 function openModal(imgData, title = '', desc = '') {
-  // Handle different input types
+
   if (typeof imgData === 'string') {
     images = [imgData];
   } else if (Array.isArray(imgData)) {
     images = imgData;
   } else {
-    console.error('Invalid image data provided to openModal');
+    console.error('Invalid image data');
     return;
   }
-  
+
   current = 0;
+
   modalImg.src = images.length > 0 ? images[current] : '';
   modalImg.style.display = images.length > 0 ? 'block' : 'none';
+
   modalTitle.textContent = title;
   modalDesc.textContent = desc;
+
   modal.style.display = "flex";
-  
-  // Add smooth fade-in animation
+
   setTimeout(() => {
     modal.style.opacity = "1";
   }, 10);
-  
-  // Prevent body scroll when modal is open
+
   document.body.style.overflow = 'hidden';
-  
-  // Show/hide carousel controls based on image count
+
   const controls = document.querySelector('.carousel-controls');
+
   if (controls) {
     controls.style.display = images.length > 1 ? 'flex' : 'none';
   }
 }
 
-// Next Image Function
+// Next Image
 function nextImg(e) {
+
   e.stopPropagation();
+
   if (images.length <= 1) return;
-  
-  // Add fade transition
+
   modalImg.style.opacity = '0';
-  
+
   setTimeout(() => {
+
     current = (current + 1) % images.length;
+
     modalImg.src = images[current];
+
     modalImg.style.opacity = '1';
+
   }, 200);
 }
 
-// Previous Image Function
+// Previous Image
 function prevImg(e) {
+
   e.stopPropagation();
+
   if (images.length <= 1) return;
-  
-  // Add fade transition
+
   modalImg.style.opacity = '0';
-  
+
   setTimeout(() => {
+
     current = (current - 1 + images.length) % images.length;
+
     modalImg.src = images[current];
+
     modalImg.style.opacity = '1';
+
   }, 200);
 }
 
-// Close Modal Function
+// Close Modal
 function closeModal(e) {
+
   if (e.target === modal) {
+
     modal.style.opacity = "0";
+
     setTimeout(() => {
+
       modal.style.display = "none";
+
       document.body.style.overflow = 'auto';
+
     }, 300);
+
   }
 }
-//Button Clicks on Contact me
-<script>
-document.getElementById("contactBtn").addEventListener("click", () => {
-  gtag('event', 'contact_button_click', {
-    event_category: 'engagement',
-    event_label: 'Contact Me Button'
-  });
-});
-</script>
 
-// Close modal on ESC key
+// Close modal on ESC
 document.addEventListener('keydown', (e) => {
+
   if (e.key === 'Escape' && modal.style.display === 'flex') {
+
     modal.style.opacity = "0";
+
     setTimeout(() => {
+
       modal.style.display = "none";
+
       document.body.style.overflow = 'auto';
+
     }, 300);
+
   }
+
 });
 
-// Arrow key navigation for images
+// Arrow key navigation
 document.addEventListener('keydown', (e) => {
+
   if (modal.style.display === 'flex') {
+
     if (e.key === 'ArrowRight') {
+
       nextImg(e);
+
     } else if (e.key === 'ArrowLeft') {
+
       prevImg(e);
+
     }
+
   }
+
 });
 
-// Reveal on Scroll Animation
+// Reveal Animation
 const reveals = document.querySelectorAll(".reveal");
 
 function revealOnScroll() {
+
   reveals.forEach(el => {
+
     const top = el.getBoundingClientRect().top;
+
     const triggerPoint = window.innerHeight - 100;
-    
+
     if (top < triggerPoint) {
+
       el.classList.add("active");
+
     }
+
   });
+
 }
 
-// Smooth scroll for navigation links
+// Smooth Scroll Navigation
 document.querySelectorAll('.nav a').forEach(anchor => {
+
   anchor.addEventListener('click', function(e) {
+
     e.preventDefault();
+
     const targetId = this.getAttribute('href');
+
     const targetSection = document.querySelector(targetId);
-    
+
     if (targetSection) {
+
       targetSection.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
+
     }
+
   });
+
 });
 
-// Track email clicks
+// Track Email Click
 document.getElementById("contactBtn").addEventListener("click", () => {
 
   gtag('event', 'contact_button_click', {
@@ -750,7 +802,7 @@ document.getElementById("contactBtn").addEventListener("click", () => {
 
 });
 
-// Track GitHub clicks
+// Track GitHub Click
 document.getElementById("githubBtn").addEventListener("click", () => {
 
   gtag('event', 'github_click', {
@@ -763,7 +815,9 @@ document.getElementById("githubBtn").addEventListener("click", () => {
 // Initialize
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
+
 revealOnScroll();
+
 </script>
 
 </body>
