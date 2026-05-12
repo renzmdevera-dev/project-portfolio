@@ -740,6 +740,26 @@ document.querySelectorAll('.nav a').forEach(anchor => {
   });
 });
 
+// Track email clicks
+document.getElementById("contactBtn").addEventListener("click", () => {
+
+  gtag('event', 'contact_button_click', {
+    event_category: 'engagement',
+    event_label: 'Email Contact Click'
+  });
+
+});
+
+// Track GitHub clicks
+document.getElementById("githubBtn").addEventListener("click", () => {
+
+  gtag('event', 'github_click', {
+    event_category: 'engagement',
+    event_label: 'GitHub Profile Click'
+  });
+
+});
+
 // Initialize
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
